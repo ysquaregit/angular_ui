@@ -1,0 +1,70 @@
+<mat-card>
+    <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+       Location Management &nbsp;
+        <span fxFlex></span>
+        <button mat-raised-button color="green" (click)="create()" [disabled]="dialogRef">
+            Create New
+        </button>
+     </mat-card-title>  
+    <hr>
+    <mat-card-content>
+        <mat-table [dataSource]="dataSource" matSort>
+
+            <!--ID Column -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>ID </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="type">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="address">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="city">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+            </ng-container>
+        
+
+            <ng-container matColumnDef="state">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> State </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="zipcode">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Zip Code </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.zipcode}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="cname">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.cname}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="action">
+                      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.action}} 
+                          <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="orange" (click)="edit()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                          <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="red" (click)="delete()" [disabled]="dialogRef"><mat-icon  color="white">close</mat-icon></button>                
+                        <!-- <button mat-raised-button class="table-action-btn" color="orange" (click)="open()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                        <button mat-raised-button class="table-action-btn" color="red" (click)="open()" [disabled]="dialogRef"> <mat-icon  color="white">close</mat-icon></button> -->
+                      </mat-cell>
+                    </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </mat-card-content>
+          </mat-card>

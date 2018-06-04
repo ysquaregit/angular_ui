@@ -1,0 +1,52 @@
+<mat-card>
+    <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+      Deadline &nbsp;
+        <span fxFlex></span>
+        <button mat-raised-button color="green" (click)="Create()" [disabled]="dialogRef">
+            Create New
+        </button>
+     </mat-card-title>  
+    <hr>
+    <mat-card-content>
+        <mat-table [dataSource]="dataSource">
+
+           
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="desc">
+              <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.desc}} </mat-cell>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="interval">
+              <mat-header-cell *matHeaderCellDef> Interval </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.interval}} </mat-cell>
+            </ng-container>
+          
+            <ng-container matColumnDef="value">
+                <mat-header-cell *matHeaderCellDef> Value</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="action">
+                  <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.action}} 
+                      <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="orange" (click)="edit()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                      <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="red" (click)="delete()" [disabled]="dialogRef"><mat-icon  color="white">close</mat-icon></button>                
+                    <!-- <button mat-raised-button class="table-action-btn" color="orange" (click)="open()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                    <button mat-raised-button class="table-action-btn" color="red" (click)="open()" [disabled]="dialogRef"> <mat-icon  color="white">close</mat-icon></button> -->
+                  </mat-cell>
+                </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          
+          </mat-card-content>
+          </mat-card>

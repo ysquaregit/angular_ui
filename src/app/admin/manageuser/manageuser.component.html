@@ -1,0 +1,35 @@
+<div class="add-dailog">
+<mat-card-title fxLayout="row" fxLayoutAlign="start center">
+    {{action}} User
+   </mat-card-title>  
+ <mat-card-content>  
+    <mat-form-field class="ml-xs mr-xs" style="width: 100%;">
+        <input matInput placeholder="Id" type="text" [(ngModel)]="userDetails.id">
+    </mat-form-field>
+   <mat-form-field class="ml-xs mr-xs" style="width: 100%;">
+       <input matInput placeholder="First Name" type="text" [(ngModel)]="userDetails.first_name">
+   </mat-form-field>
+   <mat-form-field class="ml-xs mr-xs" style="width: 100%;">
+     <input matInput placeholder="Last Name" type="text" [(ngModel)]="userDetails.last_name">
+   </mat-form-field>
+   <mat-form-field class="ml-xs mr-xs" style="width: 100%;">
+       <input matInput placeholder="Email" type="email" [(ngModel)]="userDetails.email">
+   </mat-form-field>
+   <mat-form-field class="ml-xs mr-xs" style="width: 100%;">
+       <mat-select placeholder="Role" [(ngModel)]="userDetails.role" [required]="true" #roleControl="ngModel">
+           <mat-option *ngFor="let role of roles" [value]="role.value" [disabled]="false">
+               {{ role.viewValue }}
+           </mat-option>
+       </mat-select>
+   </mat-form-field>
+   <mat-form-field class="ml-xs mr-xs" style="width: 100%;">
+       <mat-select placeholder="Permission"  [(ngModel)]="selectedPermissions" [formControl]="formctrl" multiple>
+         <mat-option *ngFor="let item of permissionList" [value]="item">{{item}}</mat-option>
+       </mat-select>
+      
+    </mat-form-field>
+     
+ </mat-card-content>
+ <button mat-button type="button" class="mat-raised-button table-btn-rt mr-1" color="red" (click)="save(userDetails)">Save</button>
+<button mat-button type="button" class="mat-raised-button table-btn-rt mr-1" color="amber" (click)="close()">Cancel</button>
+ </div>

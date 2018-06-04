@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+       Customer  Management &nbsp;
+        <span fxFlex></span>
+        <button mat-raised-button color="green" (click)="open()" [disabled]="dialogRef">
+            Create New
+        </button>
+     </mat-card-title>  
+    <hr>
+    <mat-card-content>
+        <mat-table [dataSource]="dataSource">
+  
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef>ID </mat-header-cell>
+              <mat-cell *matCellDef="let row"> <button mat-raised-button class="minWidth30" (click)="View(row)" [disabled]="dialogRef">{{row.position}}</button></mat-cell>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>Business  Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+          
+            
+            <ng-container matColumnDef="poc">
+              <mat-header-cell *matHeaderCellDef> Point Of Contact </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.poc}} </mat-cell>
+            </ng-container>
+          
+            <ng-container matColumnDef="busiph">
+              <mat-header-cell *matHeaderCellDef> Business Phone </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.busiph}} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="action">
+                  <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> 
+                    <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="orange" (click)="Edit()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                    <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="red" (click)="Delete()" [disabled]="dialogRef"><mat-icon  color="white">close</mat-icon></button>                
+                  <!-- <button mat-raised-button class="table-action-btn" color="orange" (click)="open()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                  <button mat-raised-button class="table-action-btn" color="red" (click)="open()" [disabled]="dialogRef"> <mat-icon  color="white">close</mat-icon></button> -->
+                </mat-cell>
+                </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          
+  </mat-card-content>
+  </mat-card>

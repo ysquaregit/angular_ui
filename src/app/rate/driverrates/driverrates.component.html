@@ -1,0 +1,61 @@
+
+<mat-card>
+  <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+    Driver Rates &nbsp;
+      <span fxFlex></span>
+      <button mat-raised-button color="blue" (click)="open()" [disabled]="dialogRef">
+          Create New
+      </button>
+   </mat-card-title>  
+  <hr>
+  <mat-card-content>
+
+          <mat-table [dataSource]="dataSource">
+
+                  
+              
+                  <!--LEGColumn -->
+                  <ng-container matColumnDef="leg">
+                    <mat-header-cell *matHeaderCellDef> Leg Type </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.leg}} </mat-cell>
+                  </ng-container>
+              
+                  <!-- DriverColumn -->
+                  <ng-container matColumnDef="dtype">
+                    <mat-header-cell *matHeaderCellDef> Driver Type</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.dtype}} </mat-cell>
+                  </ng-container>
+              
+                  <!-- rpm Column -->
+                  <ng-container matColumnDef="rpm">
+                    <mat-header-cell *matHeaderCellDef> Rate per Mile</mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.rpm}} </mat-cell>
+                  </ng-container>
+
+                  <!-- rphColumn -->
+                  <ng-container matColumnDef="rph">
+                    <mat-header-cell *matHeaderCellDef> Rate Per Hour</mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.rph}} </mat-cell>
+                  </ng-container>
+                  
+                  
+                  <!-- Action Column -->
+                  <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let row" >    
+                        <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="orange" (click)="edit()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                        <button mat-raised-button mat-button-sm class="mr-1 mb-1 table-action-btn" color="red" (click)="delete()" [disabled]="dialogRef"><mat-icon  color="white">close</mat-icon></button>                
+                      <!-- <button mat-raised-button class="table-action-btn" color="orange" (click)="open()" [disabled]="dialogRef"> <mat-icon color="white">edit</mat-icon></button>
+                      <button mat-raised-button class="table-action-btn" color="red" (click)="open()" [disabled]="dialogRef"> <mat-icon  color="white">close</mat-icon></button> -->
+                    </mat-cell>
+                  </ng-container>                                                      
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;">
+                  </mat-row>
+                </mat-table>
+              
+                
+  </mat-card-content>
+</mat-card>
+
+
